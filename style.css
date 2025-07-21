@@ -1,0 +1,228 @@
+:root {
+    --on-background:whitesmoke;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    color: rgb(33, 33, 33);
+    font-size: 1.92rem;
+}  
+
+
+/* ----- Sticky Navbar --------*/
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 5%;
+    position: sticky;
+    color: rgb(51, 51, 51);
+    top: 0;
+    z-index: 100;
+    height: 60px;
+    background-color: var(--on-background);
+    
+}
+
+.nav-left h1 {
+    font-weight:900;
+    font-size: 4.8rem;
+    transition: font-size 0.3s ease;
+    
+    
+}
+
+#navbar.scrolled .nav-left h1 {
+    font-size: 2.4rem;
+}
+
+.nav-right a {
+    margin-left: 20px;
+    color: hsl(0,0%,20%);
+    font-size: 1.6rem;
+    text-decoration: none;
+}
+
+.nav-right a:hover {
+    color:hsl(0, 0%, 25%);
+}
+
+/* Main Content*/ 
+.grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 180px);
+    grid-gap: 5px;    
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 1600px;
+}
+
+.item {
+    position: relative;
+    overflow: hidden;
+}
+
+.item1 { grid-area: 1 / 1 / 4 / 2; }
+.item2 { grid-area: 4 / 1 / 5 / 3; }
+.item3 { grid-area: 3 / 2 / 4 / 3; }
+.item4 { grid-area: 1 / 2 / 3 / 4; }
+.item5 { grid-area: 3 / 3 / 5 / 4; }
+.item6 { grid-area: 3 / 4 / 5 / 5; }
+.item7 { grid-area: 1 / 4 / 3 / 6; }
+.item8 { grid-area: 1 / 6 / 4 / 7; }
+.item9 { grid-area: 3 / 5 / 4 / 6; }
+.item10 { grid-area: 4 / 5 / 5 / 7; }
+
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    
+}
+
+.item:hover img {
+    &:hover {
+        transform: scale(1.5);
+    }
+}
+
+.caption {
+    position: absolute;
+    bottom: -100%;
+    left: 10px;
+    background-color: rgba(0, 0,0,0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 1.4rem;
+    transition: bottom 0.3s ease;
+}
+
+.item:hover .caption {
+    bottom: 0;
+}
+
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index:101;
+}
+
+.modal img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: cover;
+    transform: scale(0.7);
+    opacity: 0;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    
+}
+
+.modal img.reveal {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* --------- Footer -------*/
+footer {
+    color: rgb(51,51,51);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    font-size: 1.88rem ;
+}
+
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    color: hsl(0, 0%, 13%);
+    font-size: 2.4rem;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: color hsl(0, 0%, 25%);
+}
+
+/* Media - Queries */ 
+
+/* Tablet */ 
+@media screen and (max-width: 1025px) {
+
+    .nav-left h1 {
+        margin: 20px 0;
+        font-size: 2.4rem !important;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(10,minmax(150,auto));
+        padding: 0;
+        margin: auto;
+    }
+
+    .item {
+        grid-area:auto;
+    }
+
+
+
+}
+
+/*  ---- Target Horizontal orientation and typical ---*/
+@media screen and (max-width:1024px) and (orientation: landscape){
+    img {
+        max-height: 90vh;
+    }
+}
+
+/* Smartphone Vertical */ 
+@media screen and (max-width: 600px){
+    #navbar { 
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 10px 5%;
+    }
+
+    .nav-left h1 {
+        font-size: 2.4rem;
+    }
+
+    .nav-right a {
+        margin-left: unset;
+        margin-right: 20px;
+    }
+
+}
